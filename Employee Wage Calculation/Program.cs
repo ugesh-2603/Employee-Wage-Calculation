@@ -11,6 +11,7 @@
 
             const int EMP_RATE_PER_HOUR = 20;
             const int MAX_WORKING_DAYS = 20;
+            const int MAX_WORKING_HOURS = 100;
 
             int empHrs = 0;
 
@@ -18,7 +19,11 @@
 
             int totalWage = 0;
 
-            for (int day = 0; day <= MAX_WORKING_DAYS; day++)
+            int day = 1;
+
+            int totalWrkHrs = 0;
+
+            while (day <= MAX_WORKING_DAYS && totalWrkHrs <= MAX_WORKING_HOURS)
             {
                 Random random = new Random();
 
@@ -46,8 +51,12 @@
 
                 empWage = empHrs * EMP_RATE_PER_HOUR;
                 totalWage += empWage;
-                Console.WriteLine("Emp Wage: " + empWage);
+                totalWrkHrs += empHrs;
+                Console.WriteLine("Emp Wage for Day {0}: {1} ", day , empWage);
+                day++;
             }
+            Console.WriteLine("\n\nEmployee Wage for {0} Days & {1} Hours is: {2}", day - 1, totalWrkHrs, totalWage);
+            Console.ReadLine();
         }
     }
 }
