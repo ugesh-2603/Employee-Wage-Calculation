@@ -6,10 +6,10 @@
         {
             Console.WriteLine("Welcome to Employee Wage Calculation");
 
-            int IS_PART_TIME = 1;
-            int IS_FULL_TIME = 2;
+            const int IS_PART_TIME = 1;
+            const int IS_FULL_TIME = 2;
 
-            int EMP_RATE_PER_HOUR = 20; 
+            const int EMP_RATE_PER_HOUR = 20; 
 
             int empHrs = 0;
 
@@ -19,32 +19,29 @@
 
             int empCheck = random.Next(0, 3);
 
-            if (empCheck == IS_PART_TIME)
+            switch (empCheck)
 
             {
-                Console.WriteLine("Employee is Present");
+                case IS_PART_TIME:
+                Console.WriteLine("Parttime Employee is Present");
                 empHrs = 4;
+                    break;
+
+                case IS_FULL_TIME:
+                    Console.WriteLine("Fulltime Employee is Present");
+                    empHrs = 8;
+                    break;
+
+                default:
+                    Console.WriteLine("Employee is Absent");
+                    empHrs = 0;
+                    break;
 
             }
 
-            else if (empCheck == IS_FULL_TIME)
-
-            {
-                Console.WriteLine("Employee is Present");
-                empHrs = 8;
-
-            }
-
-            else
-
-            {
-                Console.WriteLine("Employee is Absent");
-                empHrs = 0;
-
-            }
-
-            empWage = empHrs * EMP_RATE_PER_HOUR; Console.WriteLine("Emp Wage: " + empWage);
-            Console.WriteLine("Emp Wage : " + empWage);
+            empWage = empHrs * EMP_RATE_PER_HOUR; 
+            Console.WriteLine("Emp Wage: " + empWage);
+    
         }
     }
 }
